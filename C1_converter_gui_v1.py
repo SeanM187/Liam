@@ -54,10 +54,29 @@ class Converter:
         self.to_history_export_button.grid(row=1, column=1, padx=5, pady=5)
 
 
+    # input checker
+    def check_temp(self, min_value):
+        error = "Please enter a number that is more than {}".format(min_value)
+
+
+        try:
+            response = self.temp_entry.get()
+            response = float(response)
+
+            if response < min_value:
+                print(error)
+            else:
+                return response
+
+        except ValueError:
+            print(error)
+
+    # check temperature is more than -459 and convert it
+    def to_celsius(self):
+
+        self.check_temp(-459)
 
 # main routine
-
-
 if __name__ == "__main__":
     root = Tk()
     root.title("Temperature Converter")
