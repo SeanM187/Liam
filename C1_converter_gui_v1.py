@@ -33,9 +33,9 @@ class Converter:
         self.button_frame = Frame(self.temp_frame)
         self.button_frame.grid(row=4)
 
-        # to celcius
+        # to celsius
         self.to_celsius_button = Button(self.button_frame, text="To DegreesC", bg="#990099",
-                                        fg=button_fg, font=button_font, width=12)
+                                        fg=button_fg, font=button_font, width=12, command=self.to_celsius)
         self.to_celsius_button.grid(row=0, column=0)
 
         # to farenheit
@@ -60,8 +60,7 @@ class Converter:
 
 
         try:
-            response = self.temp_entry.get()
-            response = float(response)
+            response = float(input("Choose a number: "))
 
             if response < min_value:
                 print(error)
