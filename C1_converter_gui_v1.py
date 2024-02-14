@@ -26,7 +26,7 @@ class Converter:
         self.temp_entry.grid(row=2, padx=10, pady=10)
 
         error = "Please enter a number"
-        self.temp_error = Label(self.temp_frame, text=error, fg="#9C0000")
+        self.temp_error = Label(self.temp_frame, text="", fg="#9C0000")
         self.temp_error.grid(row=3)
 
         # Conversion, help and history / export buttons
@@ -60,15 +60,16 @@ class Converter:
 
 
         try:
-            response = float(input("Choose a number: "))
+            response = self.temp_entry.get()
+            response = float(response)
 
             if response < min_value:
-                print(error)
+                self.temp_error.config(text=error)
             else:
                 return response
 
         except ValueError:
-            print(error)
+            self.temp_error.config(text=error)
 
     # check temperature is more than -459 and convert it
     def to_celsius(self):
