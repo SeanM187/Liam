@@ -337,7 +337,7 @@ class HistoryExport:
 
         else:
             # check that filename is valid
-            filename_ok = self.check_filename(filename)
+            filename_ok = self.check_filename(self, filename)
 
         if filename_ok == "":
             filename += ".txt"
